@@ -5,8 +5,8 @@ import java.lang.Math;
  * A three-horse race, each horse running in its own lane
  * for a given distance
  * 
- * @author McFarewell
- * @version 1.0
+ * @author McFarewell & Jadid Alam
+ * @version 1.1
  */
 public class Race
 {
@@ -72,7 +72,7 @@ public class Race
         lane2Horse.goBackToStart();
         lane3Horse.goBackToStart();
                       
-        while (!finished)
+        while (!finished && !(lane1Horse.hasFallen() && lane2Horse.hasFallen() && lane3Horse.hasFallen()))
         {
             //move each horse
             moveHorse(lane1Horse);
@@ -87,12 +87,16 @@ public class Race
             {
                 finished = true;
             }
-           
+            
             //wait for 100 milliseconds
             try{ 
                 TimeUnit.MILLISECONDS.sleep(100);
             }catch(Exception e){}
         }
+
+        increaseConfidence(finished);
+        printRace();
+        printWinner(finished);
     }
     
     /**
@@ -121,6 +125,8 @@ public class Race
             if (Math.random() < (0.1*theHorse.getConfidence()*theHorse.getConfidence()))
             {
                 theHorse.fall();
+                double newConfidence = theHorse.getConfidence() - 0.1;
+                theHorse.setConfidence(Math.floor(10.0*newConfidence)/10.0);
             }
         }
     }
@@ -133,14 +139,7 @@ public class Race
      */
     private boolean raceWonBy(Horse theHorse)
     {
-        if (theHorse.getDistanceTravelled() == raceLength)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return theHorse.getDistanceTravelled() == raceLength;
     }
     
     /***
@@ -148,19 +147,21 @@ public class Race
      */
     private void printRace()
     {
-        System.out.print('\u000C');  //clear the terminal window
+        multiplePrintln("", 20);;  //clear the terminal window
         
         multiplePrint('=',raceLength+3); //top edge of track
         System.out.println();
         
         printLane(lane1Horse);
+        printHorseDetails(lane1Horse);
         System.out.println();
         
         printLane(lane2Horse);
+        printHorseDetails(lane2Horse);
         System.out.println();
         
         printLane(lane3Horse);
-        System.out.println();
+        printHorseDetails(lane3Horse);
         
         multiplePrint('=',raceLength+3); //bottom edge of track
         System.out.println();    
@@ -189,7 +190,7 @@ public class Race
         //else print the horse's symbol
         if(theHorse.hasFallen())
         {
-            System.out.print('\u2322');
+            System.out.print('X');
         }
         else
         {
@@ -212,11 +213,74 @@ public class Race
      */
     private void multiplePrint(char aChar, int times)
     {
-        int i = 0;
-        while (i < times)
+        for  (int i = 0; i < times;i++)
         {
             System.out.print(aChar);
-            i = i + 1;
+        }
+    }
+
+
+    /**
+     * This method increases the confidence of the horse everytime it wins
+     * e.g if the horse wins, the confidence increases by 0.1
+     */
+    public void increaseConfidence(boolean finished)
+    {
+        if (raceWonBy(lane1Horse) == true && finished == true)
+        {
+            double newConfidence = lane1Horse.getConfidence() + 0.1;
+            lane1Horse.setConfidence(Math.floor(10.0*newConfidence)/10.0);
+        }
+        else if (raceWonBy(lane2Horse) == true && finished == true)
+        {
+            double newConfidence = lane2Horse.getConfidence() + 0.1;
+            lane2Horse.setConfidence(Math.floor(10.0*newConfidence)/10.0);
+        }
+        else if (raceWonBy(lane3Horse) == true && finished == true)
+        {
+            double newConfidence = lane3Horse.getConfidence() + 0.1;
+            lane3Horse.setConfidence(Math.floor(10.0*newConfidence)/10.0);
+        }
+    }
+
+    /**
+     * This method prints the horse's name and confidence
+     * e.g. BARRY (Current confidence 0.5)
+     */
+    public void printHorseDetails(Horse h)
+    {
+        System.out.println(h.getName().toUpperCase() + " (Current confidence " + h.getConfidence() + ")");
+    }
+
+    /**
+     * This method print the winner 
+     * e.g And the winner is BARRY
+     */
+    public void printWinner(boolean finished)
+    {
+        if (raceWonBy(lane1Horse) == true)
+        {
+            System.out.println("And the winner is " + lane1Horse.getName().toUpperCase());
+        }
+        else if (raceWonBy(lane2Horse) == true)
+        {
+            System.out.println("And the winner is " + lane2Horse.getName().toUpperCase());
+        }
+        else if (raceWonBy(lane3Horse) == true)
+        {
+            System.out.println("And the winner is " + lane3Horse.getName().toUpperCase());
+        }
+        else if (finished == false)
+        {
+            System.out.println("All horses have fallen, so no winners!");
+        }
+    }
+
+    private void multiplePrintln(String a, int times)
+    {
+        for  (int i = 0; i < times;i++)
+        {
+            System.out.println(a);
         }
     }
 }
