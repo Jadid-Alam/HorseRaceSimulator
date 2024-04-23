@@ -84,7 +84,7 @@ public class BettingSystem {
         // if the horse is the winner and the user has placed a bet
         if (storage.getWinnerIndex() == storage.getBetOnHorseNumber() && storage.getBetAmount() != 0)
         {
-            // give feedback based on the counter
+            // give feedback based on the counter value
             switch (counter) {
                 case 0:
                     storage.setFeedback("Well done! Stick to your strategy and don't get greedy.");
