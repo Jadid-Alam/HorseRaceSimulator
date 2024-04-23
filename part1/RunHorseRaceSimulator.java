@@ -2,7 +2,7 @@
  * Java Porgram to set up and simulate the horse race
  * 
  * @author Jadid Alam
- * @version 1.1
+ * @version 1.2
  */
 
 import java.util.Random;
@@ -12,12 +12,25 @@ class RunHorseRaceSimulator
 {
     public static void main(String[] args)
     {
+        Scanner s = new Scanner(System.in);
+
         // initialised horses and sets the distance
         char symbol1 = 'B';
         char symbol2 = 'G';
         char symbol3 = 'H';
-        int distance = 50;
-
+        
+        // getting the distance from the user and making sure it is a valid number greater than 0 and smaller than 50
+        int distance = 0;
+        while (distance <= 0 || distance > 50)
+        {
+            System.out.println("Enter the distance:");
+            try {
+                distance = Integer.parseInt(s.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number bwtween 1 and 50");
+            }
+        }
+        
         Random random = new Random();
 
         // initialised the horses
@@ -33,7 +46,7 @@ class RunHorseRaceSimulator
         race.addHorse(horse2, 2);
         race.addHorse(horse3, 3);
 
-        Scanner s = new Scanner(System.in);
+        
 
         // displaying the race on the terminal and giving an option to start another race
         boolean reapetRace = true;
