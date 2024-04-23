@@ -42,7 +42,7 @@ class RunHorseRaceSimulator
             race.startRace();
 
             System.out.println("Start another race? (y/n)");
-            reapetRace = s.next().charAt(0) == 'y';
+            reapetRace = s.nextLine().toLowerCase().charAt(0) == 'y';
         }
     }
 }
