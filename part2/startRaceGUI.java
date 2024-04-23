@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.util.Random;
 
 
-public class RunHorseRaceSimulator {
+public class startRaceGUI {
 
     /**
      * main method to run the horse racing simulator
