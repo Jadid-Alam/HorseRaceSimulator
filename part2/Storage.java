@@ -254,6 +254,55 @@ public class Storage {
         this.distance = distance;
     }
 
+    // statistics panel storages
+    private Statistics statistics;
+    private JPanel statisticsPanel;
+
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(Statistics statistics) {
+        this.statistics = statistics;
+    }
+    
+    public JPanel getStatisticsPanel() {
+        return statisticsPanel;
+    }
+
+    public void setStatisticsPanel(JPanel statisticsPanel2) {
+        this.statisticsPanel = statisticsPanel2;
+    }
+
+    // frame storage
+    private JFrame  frame;
+    private int widthOfFrame;
+    private int heightOfFrame;
+
+    public int getWidthOfFrame() {
+        return widthOfFrame;
+    }
+
+    public void setWidthOfFrame(int widthOfFrame) {
+        this.widthOfFrame = widthOfFrame;
+    }
+
+    public int getHeightOfFrame() {
+        return heightOfFrame;
+    }
+
+    public void setHeightOfFrame(int heightOfFrame) {
+        this.heightOfFrame = heightOfFrame;
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
+
     // betting storage
     private BettingSystem bettingSystem;
     private int currentBalance;
