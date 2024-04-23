@@ -95,6 +95,7 @@ public class Race
         }
 
         increaseConfidence(finished);
+        keepConfidenceInRange();
         printRace();
         printWinner(finished);
     }
@@ -253,7 +254,7 @@ public class Race
     }
 
     /**
-     * This method print the winner 
+     * This method prints the winner 
      * e.g And the winner is BARRY
      */
     public void printWinner(boolean finished)
@@ -276,11 +277,40 @@ public class Race
         }
     }
 
+    /**
+     * This method prints the line a given number of times
+     * e.g multiplePrintln("Hello", 3) will print:
+     * Hello
+     * Hello
+     * Hello
+     */
     private void multiplePrintln(String a, int times)
     {
         for  (int i = 0; i < times;i++)
         {
             System.out.println(a);
+        }
+    }
+
+    /**
+     * This method make sure to not let the horse's confidence go below 0.1
+     * i.e. if a horse with 0.1 confidence falls then it keeps it on 0.1
+     */
+    private void keepConfidenceInRange()
+    {
+        if (lane1Horse.getConfidence() < 0.1)
+        {
+            lane1Horse.setConfidence(0.1);
+        }
+
+        if (lane2Horse.getConfidence() < 0.1)
+        {
+            lane2Horse.setConfidence(0.1);
+        }
+
+        if (lane3Horse.getConfidence() < 0.1)
+        {
+            lane3Horse.setConfidence(0.1);
         }
     }
 }
