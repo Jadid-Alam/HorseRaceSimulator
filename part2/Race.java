@@ -1,5 +1,3 @@
-import java.lang.Math;
-
 /**
  * A three-horse race, each horse running in its own lane
  * for a given distance
@@ -7,6 +5,10 @@ import java.lang.Math;
  * @author McFarewell & Jadid Alam
  * @version 1.1
  */
+
+
+import java.lang.Math;
+
 public class Race
 {
     public boolean finished = false;
