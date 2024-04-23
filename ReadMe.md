@@ -42,9 +42,12 @@ Part 2:
 
 2. **Download the Source Code**: Clone or download the source code of the Java program from the repository.
 
-3. **Compile the Java Program**: Open your command line interface (e.g., Terminal on macOS/Linux, Command Prompt or PowerShell on Windows) and navigate to the directory containing the Java source code (`RunHorseRaceSimulator.java`), chose 'part1' for text version and 'part2' for GUI version. Use the following command to compile the Java program: javac RunHorseRaceSimulator.java
+3. **Compile the Java Program**: Open your command line interface (e.g., Terminal on macOS/Linux, Command Prompt or PowerShell on Windows) and navigate to the directory containing the Java source code (`startRace.java`) for part 1 and (`startRaceGUI.java`) for part 2, chose 'part1' for text version and 'part2' for GUI version. 
+Use the following command to compile the Java program for part 1: javac startRace.java
+Use the following command to compile the Java program for part 2: javac startRaceGUI.java
 
-4. **Run the Java Program**: Once the Java program is compiled successfully, you can run it using the following command: java RunHorseRaceSimulator
+4. **Run the Java Program**: Once the Java program is compiled successfully, you can run it using the following command for part 1: java startRace
+Altenatively, you can run it using the following command for part 2: java startRaceGUI
 
 5. **View Output**: If your Java program produces any output, you will see it in the command line interface.
 
