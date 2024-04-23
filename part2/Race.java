@@ -29,8 +29,7 @@ public class Race
     /**
      * Start the race
      * The horse are brought to the start and
-     * then repeatedly moved forward until the 
-     * race is finished
+     * track movement is set to 0 to reset the animation
      */
     public void startRace()
     {
@@ -50,6 +49,10 @@ public class Race
         //printWinner(finished);
     }
     
+    /**
+     * when this is called the horses will move
+     * if they have not fallen.
+     */
     public void doAction()
     {
         if (!finished && !(storage.getHorses(0).hasFallen() && storage.getHorses(1).hasFallen() && storage.getHorses(2).hasFallen() && storage.getHorses(3).hasFallen()))
@@ -67,7 +70,7 @@ public class Race
             }
             
             
-            //if any of the three horses has won the race is finished
+            //if any of the four horses has won the race is finished
             if ( raceWonBy(storage,0) || raceWonBy(storage,1) || raceWonBy(storage,2) || raceWonBy(storage,3))
             {
                 finished = true;
@@ -99,7 +102,7 @@ public class Race
             
             //the probability that the horse will fall is very small (max is 0.08)
             //but will also will depends exponentially on confidence 
-            //so if you double the confidence, the probability that it will fall is *2
+            //so if you double the confidence, the probability that it will fall is ^2
             if (Math.random() < (0.08*theHorse.getConfidence()*theHorse.getConfidence()))
             {
                 theHorse.fall();
@@ -112,8 +115,9 @@ public class Race
     /** 
      * Determines if a horse has won the race
      *
-     * @param theHorse The horse we are testing
-     * @return true if the horse has won, false otherwise.
+     * @param storage.getHorses(i) The horse we are testing
+     * @return true if the horse has won and sets its index
+     * to winner index, false otherwise.
      */
     private boolean raceWonBy(Storage storage, int i)
     {
