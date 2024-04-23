@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.util.Random;
-import java.util.concurrent.Flow;
 
 
 public class RunHorseRaceSimulator {
@@ -15,27 +14,10 @@ public class RunHorseRaceSimulator {
         storage.initialise();
         
         Random r = new Random();
-        Horse fillerHorse = new Horse("filler",100.0);
         storage.setHorses(new Horse("barry",((double)r.nextInt(9) + 1)/10.0),0);
         storage.setHorses(new Horse("garry",((double)r.nextInt(9) + 1)/10.0),1);
-        if (storage.getNoOfHorses() > 2)
-        {
-            storage.setHorses(new Horse("harry",((double)r.nextInt(9) + 1)/10.0),2);
-        }
-        else 
-        {
-            storage.setHorses(fillerHorse,2);
-        }
-        
-        if (storage.getNoOfHorses() > 3)
-        {
-            storage.setHorses(new Horse("larry",((double)r.nextInt(9) + 1)/10.0),3);
-        }
-        else 
-        {
-            storage.setHorses(fillerHorse,3);
-        }
-        
+        storage.setHorses(new Horse("harry",((double)r.nextInt(9) + 1)/10.0),2);
+        storage.setHorses(new Horse("larry",((double)r.nextInt(9) + 1)/10.0),3);
 
         storage.setRace(new Race(storage));
         storage.setBettingSystem(new BettingSystem(storage));
@@ -93,11 +75,11 @@ public class RunHorseRaceSimulator {
                         storage.getHorses(1).moveBackward();
                     }
 
-                    if (storage.getHorses(2).hasFallen() && storage.getNoOfHorses() > 2) {
+                    if (storage.getHorses(2).hasFallen()) {
                         storage.getHorses(2).moveBackward();
                     }
 
-                    if (storage.getHorses(3).hasFallen() && storage.getNoOfHorses() > 3) {
+                    if (storage.getHorses(3).hasFallen()) {
                         storage.getHorses(3).moveBackward();
                     }
 
@@ -113,15 +95,13 @@ public class RunHorseRaceSimulator {
                     {
                         ((Timer) e.getSource()).stop(); // Stop the timer
                         refreshScreenData(storage);
+                        
                     }
                     else if (storage.getNoOfHorses() == 3 && storage.getHorses(0).hasFallen() == true && storage.getHorses(1).hasFallen() == true && storage.getHorses(2).hasFallen() == true)
                     {
                         ((Timer) e.getSource()).stop(); // Stop the timer
                         refreshScreenData(storage);
                     }
-                    
-                    
-                    
                 } else {
                     ((Timer) e.getSource()).stop(); // Stop the timer
                     refreshScreenData(storage);
