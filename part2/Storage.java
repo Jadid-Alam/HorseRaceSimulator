@@ -1,10 +1,19 @@
+/**
+ * An association class to link all other classes together.
+ * This class is used to store all the data that is used 
+ * in the game.
+ * 
+ * @author Jadid Alam
+ * @version 1.5
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
 public class Storage {
 
-    // initialise
+    // initialises the storage so that the game can be played with default values
     public void initialise()
     {
         this.setNoOfHorses(4);
@@ -39,7 +48,6 @@ public class Storage {
 
 
     // race storage
-
     private Race race;
     private int winnerIndex = -1;
 
@@ -71,7 +79,6 @@ public class Storage {
     }
 
     // Horse animation storage
-
     private HorseAnimation horseAnimation;
     private JPanel horseAnimationPanel;
 
