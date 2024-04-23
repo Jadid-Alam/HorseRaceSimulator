@@ -6,6 +6,7 @@
  */
 
 import java.util.Random;
+import java.util.Scanner;
 
 class RunHorseRaceSimulator
 {
@@ -32,7 +33,16 @@ class RunHorseRaceSimulator
         race.addHorse(horse2, 2);
         race.addHorse(horse3, 3);
 
-        // displaying the race on the terminal
-        race.startRace();
+        Scanner s = new Scanner(System.in);
+
+        // displaying the race on the terminal and giving an option to start another race
+        boolean reapetRace = true;
+        while (reapetRace)
+        {
+            race.startRace();
+
+            System.out.println("Start another race? (y/n)");
+            reapetRace = s.next().charAt(0) == 'y';
+        }
     }
 }
