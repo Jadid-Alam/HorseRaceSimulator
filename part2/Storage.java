@@ -4,6 +4,40 @@ import java.util.Random;
 
 public class Storage {
 
+    // initialise
+    public void initialise()
+    {
+        this.setNoOfHorses(4);
+        this.setDistance(50);
+        this.setWidthOfFrame(800);
+        this.setHeightOfFrame(1000);
+        this.setBetAmount(0);
+        this.setBetOnHorseNumber(0);
+        this.setTrackConditions();
+        this.setCurrentBalance(1000);
+        this.setCustomiseHorseNo(0);
+        this.setHorseColor(new Color(176, 141, 87),0);
+        this.setHorseColor(new Color(92, 54, 34),1);
+        this.setHorseColor(new Color(138, 115, 75),2);
+        this.setHorseColor(new Color(255, 253, 208),3);
+        this.setLaneColor(Color.ORANGE);
+        this.setSaddleColor(Color.GRAY,0);
+        this.setSaddleColor(Color.GRAY,1);
+        this.setSaddleColor(Color.GRAY,2);
+        this.setSaddleColor(Color.GRAY,3);
+        this.setKitColor(Color.BLACK,0);
+        this.setKitColor(Color.BLACK,1);
+        this.setKitColor(Color.BLACK,2);
+        this.setKitColor(Color.BLACK,3);
+        this.setFenceColor(Color.WHITE);
+        this.setBreedColor(new Color(255, 255, 153),0);
+        this.setBreedColor(new Color(101, 67, 33),1);
+        this.setBreedColor(new Color(211, 211, 211),2);
+        this.setBreedColor(new Color(85, 85, 85),3);
+        
+    }
+
+
     // race storage
 
     private Race race;
@@ -38,6 +72,9 @@ public class Storage {
 
     // Horse animation storage
 
+    private HorseAnimation horseAnimation;
+    private JPanel horseAnimationPanel;
+
     private int customiseHorseNo;
 
     private int trackMovement;
@@ -65,6 +102,23 @@ public class Storage {
     private Color kitColor4;
 
     private Color fenceColor;
+
+    
+    public JPanel getHorseAnimationPanel() {
+        return horseAnimationPanel;
+    }
+
+    public void setHorseAnimationPanel(JPanel horseAnimationPanel) {
+        this.horseAnimationPanel = horseAnimationPanel;
+    }
+
+    public HorseAnimation getHorseAnimation() {
+        return horseAnimation;
+    }
+
+    public void setHorseAnimation(HorseAnimation horseAnimation) {
+        this.horseAnimation = horseAnimation;
+    }
 
     public int getCustomiseHorseNo() {
         return customiseHorseNo;
